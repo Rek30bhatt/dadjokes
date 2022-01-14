@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       
+        .container{
+            text-align: center;
+            width: 400px;
+            height: 190px;
+            margin-top: 200px;
+            margin-left: 300px;
+            border: 2px solid green;
+            margin-top: 200px;
+            background-color: lightskyblue;
+            border-radius:20px;
+            padding: 20px;
+        
+
+        }
+        .joke{
+            margin-top: 30px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: medium;
+        }
+        .btn{
+            cursor: pointer;
+            color: white;
+            font-family:sans-serif;
+            margin-top: 10px;
+            background-color:tomato;
+            border-radius: 5px;
+            border:none;
+            padding: 10px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <h4>🧝‍♀️ Best Joke to make your day 🧝‍♂️</h4>
+    <div id="joke" class="joke">Awesome jokes are loading</div>
+    <button id="joke_btn" class="btn">Next Joke</button></div>
+    <script>
+const generatejokes = () =>{
+
+
+
+    const setHeader ={
+        headers:{
+            Accept : "application/json"
+        }
+    }
+    fetch('https://icanhazdadjoke.com/',setHeader)
+    .then((res) => res.json()
+    )
+    .then((data) => {jokes.innerHTML =  data.joke
+    })
+    
+    
+    .catch((error) =>{
+        console.log(error)
+    })
+}
+
+// GET https://icanhazdadjoke.com/
+
+const jokes = document.querySelector("#joke")
+const jokes_btn = document.querySelector("#joke_btn")
+jokes_btn.addEventListener('click',generatejokes)
+generatejokes()
+    </script>
+
+</body>
+</html>
